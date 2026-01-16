@@ -4,10 +4,10 @@ class ServiceError extends Error {
     
     constructor(
         message,
-        explanatiomn=[],
-        statuscode= StatusCodes.INTERNAL_SERVER_ERROR
+        explanations=[],
+        statusCode= StatusCodes.INTERNAL_SERVER_ERROR
     ){
-        
+        super()
         this.name='serviceError';
         this.message=message;
         this.explanations=explanations
@@ -15,3 +15,4 @@ class ServiceError extends Error {
     
     }
 }
+module.exports=ServiceError

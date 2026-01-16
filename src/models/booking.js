@@ -2,32 +2,40 @@
 const {
   Model
 } = require('sequelize');
-const { all } = require('../routes/v1');
 module.exports = (sequelize, DataTypes) => {
   class Booking extends Model {
-    /**
-     * Helper method for defining associations.
-     * This method is not a part of Sequelize lifecycle.
-     * The `models/index` file will call this method automatically.
-     */
+    
     static associate(models) {
-      // define association here
+Booking.hasMany(models.outbox,{
+  foreignKey:'booking_id'
+})
+
     }
   }
-  Bookign.init({
+  Booking.init({
     flightID:{ 
       type:DataTypes.INTEGER,
-      allownull:false
+      allowNull:false
     },
     userID: { 
       type:DataTypes.INTEGER,
-      allownull:false
+      allowNull:false
     },
     status: { 
       type:DataTypes.ENUM,
-      allownull:false,
-      values:["In Process","Booked","Cancelled"],
-      defaultvalue:"In Process"
+      allowNull:false,
+      values:["In Process","Completed","Cancelled"],
+      defaultValue:"In Process"
+    },
+     totalCost: { 
+      type:DataTypes.INTEGER,
+      allowNull:false,      
+      defaultValue:0
+    },
+     noOfSeats: { 
+      type:DataTypes.INTEGER,
+      allowNull:false,
+      defaultValue:1
     }
   }, {
     sequelize,
