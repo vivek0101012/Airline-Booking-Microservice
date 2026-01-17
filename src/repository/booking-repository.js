@@ -9,10 +9,10 @@ const booking = require("../models/booking");
 
 class BookingRepository {
 
-    async create(data){
+    async create(data,options={}){
 
         try{
-             const booking= await Booking.create(data);
+             const booking= await Booking.create(data,options);
              return booking;
 
         }catch(error){

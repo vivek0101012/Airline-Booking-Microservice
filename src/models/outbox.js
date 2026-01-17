@@ -35,6 +35,13 @@ module.exports = (sequelize, DataTypes) => {
       defaultValue:"PENDING",
       allowNull:false
     
+    },
+    booking_status:{
+      type:DataTypes.ENUM,
+      values:['IN_PROGRESS', 'COMPLETED', 'CANCELLED','FAILED'],
+      defaultValue:'IN_PROGRESS',
+      allowNull:false
+
     }
   }, {
     sequelize,

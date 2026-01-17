@@ -6,7 +6,7 @@ module.exports = (sequelize, DataTypes) => {
   class Booking extends Model {
     
     static associate(models) {
-Booking.hasMany(models.outbox,{
+this.hasMany(models.Outbox,{
   foreignKey:'booking_id'
 })
 
@@ -24,7 +24,7 @@ Booking.hasMany(models.outbox,{
     status: { 
       type:DataTypes.ENUM,
       allowNull:false,
-      values:["In Process","Completed","Cancelled"],
+      values:["In Process","Completed","Cancelled","Failed"],
       defaultValue:"In Process"
     },
      totalCost: { 
